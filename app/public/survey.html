@@ -97,6 +97,8 @@
     // Question: What does this code do?
     $("#find-friend-btn").on("click", function(event) {
       event.preventDefault();
+
+      // maybe create a var to store each response to the questions above ??
       var newFriend = {
         name: $("#urName").val().trim(),
         picture: $("#urPicture").val().trim(),
