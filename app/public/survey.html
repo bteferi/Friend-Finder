@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Star Wars - Express</title>
@@ -9,14 +10,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Star Wars Express</h1>
-      <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
-      <hr>
-      <a href="/"><button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-eye-open"></span> View Characters</button></a>
+      <h1>Friend Finder Questionnaires</h1>
+      <h3>A couple of questions away from finding your Best Friend!</h3>
     </div>
     <div class="row">
 
@@ -27,32 +27,64 @@
             <h3 class="panel-title"><strong>Add Characters</strong></h3>
           </div>
           <div class="panel-body">
+
+            <!-- POST IS THE METHOD HERE  -->
             <form method="POST" role="form">
+              <form class="form-inline">
+                <div>
+                  <label for="exampleFormControlTextarea1"> What is your Name ?</label>
+                  <textarea class="form-control" id="urName" rows="1"></textarea>
+                </div>
+                <br>
+                <div>
+                  <label for="exampleFormControlTextarea1"> Please add a link to you picture</label>
+                  <textarea class="form-control" id="urPicture" rows="1"></textarea>
+                </div>
+                <br>
+                <div>
+                  <div>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> Black Panther is one of the best movies ever made.</label>
+                    <br>
+                  </div>
 
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name">
-              </div>
+                  <select class="custom-select my-1 mr-sm-2" id="q2">
+                  <option selected>Choose...</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
 
-              <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" id="role">
-              </div>
 
-              <div class="form-group">
-                <label for="age">Age</label>
-                <input type="text" class="form-control" id="age">
-              </div>
+                </div>
 
-              <div class="form-group">
-                <label for="force-points">Force Points</label>
-                <input type="text" class="form-control" id="force-points">
-              </div>
+                <br>
+
+
+                <div>
+                  <div>
+                    <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> Would you consider yourself to be a good best friend?</label>
+                    <br>
+                  </div>
+
+                  <select class="custom-select my-1 mr-sm-2" id="q1">
+            <option selected>Choose...</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+
+
+                </div>
+              </form>
 
             </form>
             <br>
             <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span> Add to the Force</button>
+              <button type="submit" class="btn btn-primary btn-md" id="find-friend-btn"><span class="glyphicon glyphicon-heart"></span> Find My Best Friend</button>
             </div>
           </div>
         </div>
@@ -63,23 +95,24 @@
 
   <script type="text/javascript">
     // Question: What does this code do?
-    $("#add-btn").on("click", function(event) {
+    $("#find-friend-btn").on("click", function(event) {
       event.preventDefault();
-      var newCharacter = {
-        name: $("#name").val().trim(),
-        role: $("#role").val().trim(),
-        age: $("#age").val().trim(),
-        forcePoints: $("#force-points").val().trim()
+      var newFriend = {
+        name: $("#urName").val().trim(),
+        picture: $("#urPicture").val().trim(),
+        question1: $("#q1").val().trim(),
+        question2: $("#q2").val().trim(),
       };
 
       // Question: What does this code do??
-      $.post("/api/new", newCharacter)
-      .done(function(data) {
-        console.log(data);
-        alert("Adding character...");
-      });
+      $.post("/api/friends", newFriend)
+        .done(function(data) {
+          console.log(data);
+          alert("Adding a New Best Friend...");
+        });
     });
   </script>
 
 </body>
+
 </html>

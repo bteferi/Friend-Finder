@@ -17,6 +17,44 @@ module.exports = function(app) {
 
 
 
+// POST ROUTE WILL HANDLE ALL INCOMING INFO
+
+// This route will also be used to handle the compatibility logic.
+
+app.post("/api/friends", function( req, res){
 
 
-}
+var newFriend = req.body;
+// what goes in to the body
+
+console.log(newFriend)
+ // here is the data being sent from the user as a request - this will show on console Prompt
+// here goes the info saved from the survey page and we use post to add it here
+
+
+// now I post the users data to my api - data for all my possible friends
+
+      friendsData.push(newFriend);
+
+      res.json(newFriend)
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+} // module export ends here
