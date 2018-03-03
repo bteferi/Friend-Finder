@@ -102,8 +102,12 @@
       var newFriend = {
         name: $("#urName").val().trim(),
         picture: $("#urPicture").val().trim(),
-        question1: $("#q1").val().trim(),
-        question2: $("#q2").val().trim(),
+
+        score:[
+         $("#q1").val().trim(),
+        $("#q2").val().trim(),
+        ]
+
       };
 
       // Question: What does this code do??
