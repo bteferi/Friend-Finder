@@ -10,24 +10,24 @@ var friends = [{
       name: "Micheal B Jordan",
       photo: "http://thatgrapejuice.net/wp-content/uploads/2017/05/michael-b-jordan-tgj-2017-191910.png",
       scores: [
-          "5",
-          "1",
-      
+          "4",
+          "2",
+
         ]
 }, {
   name: "Lupita",
   photo: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAq7AAAAJDAwYzI4NTQ4LWYwZWUtNGFkYS1hNTYwLTZjYzkwY2ViZDA3OA.jpg",
   scores: [
       "5",
-      "1",
+      "3",
 
     ]
 },{
   name: "Sara",
   photo: "http://www.hawtcelebs.com/wp-content/uploads/2017/12/lupita-nyong-o-at-star-wars-the-last-jedi-premiere-in-los-angeles-12-09-2017-9.jpg",
   scores: [
-      "5",
       "1",
+      "3",
 
     ]
 }
