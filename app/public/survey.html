@@ -102,9 +102,9 @@
       var newFriend = {
         name: $("#urName").val().trim(),
         picture: $("#urPicture").val().trim(),
-        score:[
-         $("#q1").val().trim(),
-        $("#q2").val().trim(),
+        score: [
+          $("#q1").val().trim(),
+          $("#q2").val().trim(),
         ]
 
       };
@@ -112,8 +112,16 @@
       // Question: What does this code do??
       $.post("/api/friends", newFriend)
         .done(function(data) {
-          console.log(data);
-          alert("Adding a New Best Friend...");
+          console.log(data)
+          var bffName = data.name;
+          // document.getElementById("myImage").src="data.photo"
+          var bffPic = data.photo;
+          alert(bffName + " is your new Best friend" + " Here is a link link to his/her Picture" + bffPic);
+
+
+
+
+
         });
     });
   </script>
