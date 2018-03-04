@@ -25,40 +25,46 @@ module.exports = function(app) {
 
 
     var newFriend = req.body;
+    var bestMatch = {};
+      // console.log(newFriend.score)
+    for(var i = 0; i <newFriend.score.length; i++) {
+      if(newFriend.score[i] == "1") {
+        newFriend.score[i] = 1;
+      } else if(newFriend.score[i] == "5") {
+        newFriend.score[i] = 5;
+      } else {
+        newFriend.score[i] = parseInt(newFriend.score[i]);
+      }
+    }
+    // compare the scores of newFriend with the scores of each friend in the database and find the friend with the smallest difference when each set of scores is compared
 
-    for (var i = 0; i < friendsData.length; i++) {
+    var bestMatchIndex = 0;
+    //greatest score difference for a question is 4, therefore greatest difference is 4 times # of questions in survey
+    var bestMatchDifference = 40;
 
-      var availableFriendsScores =friendsData[i].scores
-          console.log(availableFriendsScores)
-          for (var j=0 ; j < availableFriendsScores.length; j++){
+    for(var i = 0; i < friendsData.length; i++) {
+      var totalDifference = 0;
 
-                console.log(newFriend.score)
-                 // var newFriendScore = newFriend.scores[j]
-                // // console.log(newFriendScore)
-          }
+      for(var index = 0; index < friendsData[i].scores.length; index++) {
+        var differenceOneScore = Math.abs(friendsData[i].scores[index] - newFriend.score[index]);
+        totalDifference += differenceOneScore;
+      }
 
-
-      // compare availableFriends to newFriend
-
+      // if the totalDifference in scores is less than the best match so far
+      // save that index and difference
+      if (totalDifference < bestMatchDifference) {
+        bestMatchIndex = i;
+        bestMatchDifference = totalDifference;
+      }
     }
 
+    // the best match index is used to get the best match data from the friends index
+    bestMatch = friendsData[bestMatchIndex];
 
-
-
-    // for (var j = 0; j < newFriend.score.length; j++) {
-    //   var surveryAnsers = newFriend.score
-    //   // console.log(" NEW FRIENDS  " + surveryAnsers);
-    //
-    // }
-
-
-
-
-
+    // Put new friend from survey in "database" array
     friendsData.push(newFriend);
-
-    res.json(newFriend)
-
+    res.json(bestMatch)
+    
   });
 
 
