@@ -7,8 +7,11 @@
 
 1. [express.js](https://www.npmjs.com/package/express)
 2. [bodyParser](https://www.npmjs.com/package/body-parser)
- 3.  
- 4.  [path](https://www.npmjs.com/package/path)
+ 3. [path](https://www.npmjs.com/package/path)
 
+
+
+
+### Here is a demo of the App.
 
  ![Friend Finder](friendFinder.gif)
