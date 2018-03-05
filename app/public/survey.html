@@ -3,9 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Star Wars - Express</title>
+  <title>Best Friend Finder</title>
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
@@ -93,7 +94,14 @@
     </div>
   </div>
 
-  <script type="text/javascript">
+  <!-- The Modal -->
+  <div id="my-modal">
+    <h3 id="friend-name"></h3>
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+</body>
+<script type="text/javascript">
     // Question: What does this code do?
     $("#find-friend-btn").on("click", function(event) {
       event.preventDefault();
@@ -113,19 +121,29 @@
       $.post("/api/friends", newFriend)
         .done(function(data) {
           console.log(data)
-          var bffName = data.name;
-          // document.getElementById("myImage").src="data.photo"
-          var bffPic = data.photo;
-          alert(bffName + " is your new Best friend" + " Here is a link link to his/her Picture" + bffPic);
-
-
-
-
+      //    data.name;
+      //     // document.getElementById("myImage").src="data.photo"
+      // data.photo;
+ friendModal(data.photo, data.name);
 
         });
     });
+
+
+    function friendModal(imgURL, name) {
+     $('#friend-name').text('Meet your new friend, ' + name);
+     // start modal
+     $('#my-modal').addClass('modal');
+     $('#modal-img').attr('src', imgURL);
+     // close modal
+     $('.close').on('click', function() {
+       $('#my-modal').removeClass('modal');
+       $('#modal-img').attr('src', '');
+     });
+   }
+ // });
   </script>
 
-</body>
+
 
 </html>
